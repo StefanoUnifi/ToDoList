@@ -2,30 +2,51 @@
 // Created by stefa on 26/08/2024.
 //
 
+#include <stdexcept>
 #include "Date.h"
 
-Date::Date(int day, int month, int year)
-    : day(day), month(month), year(year) {}
+Date::Date(int day, int month, int year){
+    if(!validDate(day, month, year))
+        throw std::out_of_range("Date not valid!");
+    this->day = day;
+    this->month = month;
+    this->year = year;
+}
 
 int Date::getDay() const {
     return day;
 }
 void Date::setDay(int day) {
-    Date::day = day;
+    if(validDay(day, this->month, this->year))
+        Date::day = day;
+    else
+        throw std::out_of_range("Day not valid!");
 }
 
 int Date::getMonth() const {
     return month;
 }
 void Date::setMonth(int month) {
-    Date::month = month;
+    if(validMonth(month)) {
+        if(validDay(this->day, month, this->year))
+            Date::month = month;
+        else
+            throw std::out_of_range("Day not valid for the month!");
+    }else
+        throw std::out_of_range("Month not valid!");
 }
 
 int Date::getYear() const {
     return year;
 }
 void Date::setYear(int year) {
-    Date::year = year;
+    if(validYear(year)) {
+        if(validDay(this->day, month, this->year))
+            Date::year = year;
+        else
+            throw std::out_of_range("Day not valid for the year!");
+    }else
+        throw std::out_of_range("Year not valid!");
 }
 
 
