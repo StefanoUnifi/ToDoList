@@ -24,7 +24,7 @@ public:
     bool isCompleted() const {
         return completed;
     }
-    void setCompleted(bool completed) {
+    void setCompleted() {
        if(!isCompleted())
            this->completed = true;
        else
