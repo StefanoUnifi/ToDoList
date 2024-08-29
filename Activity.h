@@ -5,12 +5,14 @@
 #ifndef TODOLIST_ACTIVITY_H
 #define TODOLIST_ACTIVITY_H
 
+#include "Date.h"
 #include <string>
+#include <sstream>
 
 class Activity {
 public:
-    Activity( const std::string &description, bool completed = false) :
-        description(description), completed(completed) {}
+    Activity(const Date &date, const std::string &description, bool completed = false) :
+            date(date), description(description), completed(completed) {}
 
     const std::string &getDescription() const {
         return description;
@@ -29,10 +31,21 @@ public:
            this->completed = false;
     }
 
+    std::string getDate() const {
+        std::stringstream s;
+        if(date.getDay() != 0)
+            s << date.getDay() << "/" << date.getMonth() << "/" << date.getYear();
+        return s.str();
+    }
+    void setDate(const Date &date) {
+        Activity::date = date;
+    }
 
 private:
     std::string description;
     bool completed;
+
+    Date date;
 };
 
 #endif //TODOLIST_ACTIVITY_H
