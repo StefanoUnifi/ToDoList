@@ -41,6 +41,12 @@ public:
         Activity::date = date;
     }
 
+    bool operator==(const Activity &act) const {
+        if(this->description == act.description this->date == act.date)
+            return true;
+        return false;
+    }
+
 private:
     std::string description;
     bool completed;

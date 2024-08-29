@@ -19,6 +19,8 @@ class Date {
         int getYear() const;
         void setYear(int year);
 
+        bool operator==(const Date &date) const;
+
     private:
         int day;
         int month;

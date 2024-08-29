@@ -99,3 +99,9 @@ bool Date::validDate(int day, int month, int year) {
     else
         return false;
 }
+
+bool Date::operator==(const Date &date) const {
+    if(this->day == date.day && this->month == date.month && this->year == date.year)
+        return true;
+    return false;
+}

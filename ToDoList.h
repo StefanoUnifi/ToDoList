@@ -18,9 +18,18 @@ class ToDoList {
         const std::string &getTitle() const;
         void setTitle(const std::string &title);
 
+        void addActivity(const Activity &activity);
+
+        void removeActivity(const std::string &description);
+
+        void removeActivities();
+
 
     private:
         std::list<Activity> toDoList;
         std::string title;
+        int nOfAct{0}; // number of activities
+
+        Activity &helperFindActivity(const std::string &parameter);
 };
 #endif //TODOLIST_TODOLIST_H
