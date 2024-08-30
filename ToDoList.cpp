@@ -21,6 +21,7 @@ void ToDoList::setTitle(const std::string &title) {
 void ToDoList::addActivity(const Activity &a) {
     toDoList.push_back(a);
     this->nOfAct++;
+    this->displayAllActivities();
 }
 
 void ToDoList::removeActivity(const std::string &description) {
@@ -31,6 +32,7 @@ void ToDoList::removeActivity(const std::string &description) {
         this->nOfAct--;
         if (deletedAct.isCompleted())
             this->nOfComplAct--;
+        this->displayAllActivities();
     } else
         std::cout << "Sorry there's not an activity with description: " << description << std::endl;
 }
@@ -61,6 +63,8 @@ void ToDoList::modifyActivity(const std::string &desc, const std::string &newDes
             modAct.setDate(newDate);
         else
             modAct.setCompleted();
+
+        this->displayAllActivities();
     } else
         std::cout << "Sorry there's not an activity with description: " << desc << std::endl;
 }
@@ -72,4 +76,48 @@ void ToDoList::setActivityCompleted(const std::string &description) {
         setAct.setCompleted();
         this->nOfComplAct++;
     }
+    this->displayAllActivities();
+}
+
+void ToDoList::displayAllActivities() {
+    std::cout << "\nList of all activities from '" << this->title << "': " << std::endl;
+
+    for (auto &act: toDoList) {
+        std::cout << "Description: " << act.getDescription() << " - ";
+        if(!act.isCompleted())
+            std::cout << "To be completed in " << act.getDate() << "\n";
+        else
+            std::cout << "Already done!" << std::endl;
+    }
+
+    if (getNumberOfActivities() == 1)
+        std::cout << "\nYou have " << nOfAct << " activity and " << nOfComplAct << " completed" << std::endl;
+    else if (nOfAct > 1)
+        std::cout << "\nYou have " << nOfAct << " activities and " << nOfComplAct << " completed" << std::endl;
+    else
+        std::cout << "\nThere are no activities at the moment!" << std::endl;
+}
+
+void ToDoList::displayUncompletedActivities() {
+    std::cout << "\nList of uncompleted activities:" << std::endl;
+
+    for (auto &act: toDoList) {
+        if (!act.isCompleted())
+            std::cout << "Description: " << act.getDescription() << " - " << act.getDate() << std::endl;
+    }
+
+    if (nOfAct == 1)
+        std::cout << "\nYou have 1 activity complete" << std::endl;
+    else if (nOfAct > 1)
+        std::cout << "\nYou have " << getNumberOfUncompletedActivities() << " activities to complete" << std::endl;
+    else
+        std::cout << "\nThere are no activities to complete at the moment!" << std::endl;
+}
+
+int ToDoList::getNumberOfActivities() const {
+    return nOfAct;
+}
+
+int ToDoList::getNumberOfUncompletedActivities() const {
+    return this->nOfAct - this->nOfComplAct;
 }

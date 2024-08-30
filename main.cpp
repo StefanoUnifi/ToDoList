@@ -13,6 +13,7 @@ int main() {
     displayOptions();
 
     do{
+        std::cout << "\nPlease enter your option: ";
         std::cin >> option;
 
         std::string title;
@@ -26,7 +27,7 @@ int main() {
             case 0:
                 stop = true;
                 std::cout << "\n************************************************************" << std::endl;
-                std::cout << "\n\t\tThank you for using my application...\n\t\t\tGoodbye!" << std::endl;
+                std::cout << "\n\t\tThank you for using my application...\n\t\t\t\tGoodbye!" << std::endl;
                 std::cout << "\n************************************************************" << std::endl;
                 break;
 
@@ -44,7 +45,7 @@ int main() {
                 std::cin.ignore();
                 std::getline(std::cin, description);
 
-                std::cout << "Eneter also the due date of the activity (day/month/year):";
+                std::cout << "Eneter also the due date of the activity (after a space type: day/month/year):";
                 std::cin.ignore();
                 std::getline(std::cin, stringDate);
 
@@ -93,6 +94,14 @@ int main() {
                 break;
 
             case 6:
+                list.displayAllActivities();
+                break;
+
+            case 7:
+                list.displayUncompletedActivities();
+                break;
+
+            case -1:
                 displayOptions();
                 break;
 
@@ -114,5 +123,8 @@ void displayOptions(){
     std::cout << "3) Remove an Activity " << std::endl;
     std::cout << "4) Modify an Activity " << std::endl;
     std::cout << "5) Set completed an Activity " << std::endl;
-    std::cout << "6) Display the options" << std::endl;
+    std::cout << "6) Display all your activities " << std::endl;
+    std::cout << "7) Display your uncompleted activities" << std::endl;
+
+    std::cout << "-) Display the options" << std::endl;
 }

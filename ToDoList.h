@@ -25,6 +25,12 @@ class ToDoList {
 
         void setActivityCompleted(const std::string &description);
 
+        void displayAllActivities();
+        void displayUncompletedActivities();
+
+        int getNumberOfActivities() const;
+        int getNumberOfUncompletedActivities() const;
+
     private:
         std::list<Activity> toDoList;
         std::string title;
