@@ -42,9 +42,22 @@ public:
     }
 
     bool operator==(const Activity &act) const {
-        if(this->description == act.description this->date == act.date)
+        if(this->description == act.description && this->date == act.date)
             return true;
         return false;
+    }
+
+    static Date getDateFromString(const std::string &dateString) {
+        std::istringstream iss(dateString);
+        std::string token;
+        int values[3];
+        int i = 0;
+
+        while (std::getline(iss, token, '/')) {
+            values[i++] = std::stoi(token);
+        }
+
+        return Date(values[0], values[1], values[2]);
     }
 
 private:
