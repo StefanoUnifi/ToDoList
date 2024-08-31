@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include "ToDoList.h"
 
 ToDoList::ToDoList(std::string title) : title(std::move(title)) {}
@@ -120,4 +121,43 @@ int ToDoList::getNumberOfActivities() const {
 
 int ToDoList::getNumberOfUncompletedActivities() const {
     return this->nOfAct - this->nOfComplAct;
+}
+
+void ToDoList::saveToFile(const std::string &fileName) const {
+    std::ofstream file(fileName);
+
+    if (file.is_open()) {
+        file << title << std::endl;
+        for (const auto &act: toDoList) {
+            file << act.getDescription() << "- " << act.getDate() << " - ";
+            if (act.isCompleted())
+                file << "completed." << std::endl;
+            else
+                file << "uncompleted." << std::endl;
+        }
+        file.close();
+    } else
+        throw (std::runtime_error) "Sorry, the file could not be saved!";
+}
+
+void ToDoList::loadFromFile(const std::string &fileName, ToDoList &newList) {
+    std::ifstream file(fileName);
+
+    if (file.is_open()) {
+        std::string line;
+        std::getline(file, newList.title);
+
+        while (std::getline(file, line)) {
+            std::stringstream ss(line);
+            std::string desc, dateString, completed;
+            std::getline(ss, desc, '-');
+            std::getline(ss, dateString, '-');
+            std::getline(ss, completed, '.');
+            bool isCompleted = (completed == "completed") ? true : false;
+            Date dueDate = Activity::getDateFromString(dateString);
+            newList.toDoList.emplace_back(dueDate, desc, isCompleted);
+        }
+        file.close();
+    } else
+        throw (std::runtime_error) "Sorry, the file could not be loaded!";
 }

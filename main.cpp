@@ -101,7 +101,19 @@ int main() {
                 list.displayUncompletedActivities();
                 break;
 
-            case -1:
+            case 8:
+                list.saveToFile(list.getTitle() + ".txt");
+                std::cout << "Your file has been successfully saved!" << std::endl;
+                break;
+
+            case 9:
+                std::cout << "Please enter the name of the file (type 'title'.txt): ";
+                std::cin.ignore();
+                std::getline(std::cin, title);
+                ToDoList::loadFromFile(title, list);
+                break;
+
+            case 10:
                 displayOptions();
                 break;
 
@@ -125,6 +137,7 @@ void displayOptions(){
     std::cout << "5) Set completed an Activity " << std::endl;
     std::cout << "6) Display all your activities " << std::endl;
     std::cout << "7) Display your uncompleted activities" << std::endl;
-
-    std::cout << "-) Display the options" << std::endl;
+    std::cout << "8) Save your activities in a file" << std::endl;
+    std::cout << "9) Upload your activities from a file" << std::endl;
+    std::cout << "10) Display the options" << std::endl;
 }
