@@ -26,19 +26,13 @@ class Date {
         int month;
         int year;
 
-        /*le funzioni per verificare giorni, mesi e anni validi sono private
-        perché non vengono utilizzate al di fuori della classe*/
         bool validYear(int year);
         bool validMonth(int month);
         bool validDay(int day, int month, int year) const;
         bool validDate(int day, int month, int year);
 
-        /*la funzione per verificare se una data è valida è privata perché non
-        viene utilizzata al di fuori della classe*/
         int getDaysOfMonth(int month, int year) const;
 
-        /*la funzione per verificare se un anno è bisestile è privata perché non
-        viene utilizzata al di fuori della classe*/
         bool isLeap(int year) const;
 };
 

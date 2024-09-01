@@ -62,8 +62,6 @@ void ToDoList::modifyActivity(const std::string &desc, const std::string &newDes
             modAct.setDescription(newDesc);
         else if(!newDate.operator==(Date()))
             modAct.setDate(newDate);
-        else
-            modAct.setCompleted();
 
         this->displayAllActivities();
     } else
@@ -90,13 +88,6 @@ void ToDoList::displayAllActivities() {
         else
             std::cout << "Already done!" << std::endl;
     }
-
-    if (getNumberOfActivities() == 1)
-        std::cout << "\nYou have " << nOfAct << " activity and " << nOfComplAct << " completed" << std::endl;
-    else if (nOfAct > 1)
-        std::cout << "\nYou have " << nOfAct << " activities and " << nOfComplAct << " completed" << std::endl;
-    else
-        std::cout << "\nThere are no activities at the moment!" << std::endl;
 }
 
 void ToDoList::displayUncompletedActivities() {
@@ -106,21 +97,6 @@ void ToDoList::displayUncompletedActivities() {
         if (!act.isCompleted())
             std::cout << "Description: " << act.getDescription() << " - " << act.getDate() << std::endl;
     }
-
-    if (nOfAct == 1)
-        std::cout << "\nYou have 1 activity complete" << std::endl;
-    else if (nOfAct > 1)
-        std::cout << "\nYou have " << getNumberOfUncompletedActivities() << " activities to complete" << std::endl;
-    else
-        std::cout << "\nThere are no activities to complete at the moment!" << std::endl;
-}
-
-int ToDoList::getNumberOfActivities() const {
-    return nOfAct;
-}
-
-int ToDoList::getNumberOfUncompletedActivities() const {
-    return this->nOfAct - this->nOfComplAct;
 }
 
 void ToDoList::saveToFile(const std::string &fileName) const {

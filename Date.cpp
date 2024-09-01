@@ -51,7 +51,7 @@ void Date::setYear(int year) {
 
 
 bool Date::validYear(int year) {
-    if(year > 2000 && year < 2100)
+    if(year > 2000)
         return true;
     return false;
 }

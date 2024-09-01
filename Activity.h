@@ -25,7 +25,7 @@ public:
         return completed;
     }
     void setCompleted() {
-       if(!isCompleted())
+       if(!this->isCompleted())
            this->completed = true;
        else
            this->completed = false;

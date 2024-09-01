@@ -28,9 +28,6 @@ class ToDoList {
         void displayAllActivities();
         void displayUncompletedActivities();
 
-        int getNumberOfActivities() const;
-        int getNumberOfUncompletedActivities() const;
-
         void saveToFile(const std::string &fileName) const;
         static void loadFromFile(const std::string &fileName, ToDoList &newList);
 

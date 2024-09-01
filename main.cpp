@@ -65,13 +65,13 @@ int main() {
                 std::cin.ignore();
                 std::getline(std::cin, description);
 
-                std::cout << "What would you like to modify? (1-->description, 2-->date, 3-->completed): ";
+                std::cout << "What would you like to modify? (1-->description, 2-->date): ";
                 std::cin >> choice;
 
                 if(choice == 1){
                     std::cout << "Enter the new description: ";
                     std::cin.ignore();
-                    std::getline(std::cin, description);
+                    std::getline(std::cin, newDesc);
                     list.modifyActivity(description, newDesc, date);
                 }else if(choice == 2){
                     std::cout << "Enter the new date (day/month/year): ";
@@ -79,11 +79,8 @@ int main() {
                     std::getline(std::cin, stringDate);
                     date = Activity::getDateFromString(stringDate);
                     list.modifyActivity(description, newDesc, date);
-                }else if(choice == 3)
-                    list.modifyActivity(description, newDesc, date);
-                else
+                }else
                     std::cout << "Invalid choice!" << std::endl;
-
                 break;
 
             case 5:
