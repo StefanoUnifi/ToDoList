@@ -189,6 +189,13 @@ build install/strip: phony CMakeFiles/install/strip.util
 
 build cmake_object_order_depends_target_runAllTests: phony || cmake_object_order_depends_target_ToDoList_lib cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
 
+build test/CMakeFiles/runAllTests.dir/DateTest.cpp.obj: CXX_COMPILER__runAllTests_Debug C$:/Users/stefa/CLionProjects/ToDoList/test/DateTest.cpp || cmake_object_order_depends_target_runAllTests
+  DEP_FILE = test\CMakeFiles\runAllTests.dir\DateTest.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/include -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test\CMakeFiles\runAllTests.dir
+  OBJECT_FILE_DIR = test\CMakeFiles\runAllTests.dir
+
 build test/CMakeFiles/runAllTests.dir/runAllTests.cpp.obj: CXX_COMPILER__runAllTests_Debug C$:/Users/stefa/CLionProjects/ToDoList/test/runAllTests.cpp || cmake_object_order_depends_target_runAllTests
   DEP_FILE = test\CMakeFiles\runAllTests.dir\runAllTests.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -211,7 +218,7 @@ build test/CMakeFiles/runAllTests.dir/ActivityTest.cpp.obj: CXX_COMPILER__runAll
 #############################################
 # Link the executable test\runAllTests.exe
 
-build test/runAllTests.exe: CXX_EXECUTABLE_LINKER__runAllTests_Debug test/CMakeFiles/runAllTests.dir/runAllTests.cpp.obj test/CMakeFiles/runAllTests.dir/ActivityTest.cpp.obj | lib/libgtest.a lib/libgtest_main.a libToDoList_lib.a lib/libgtest.a || libToDoList_lib.a lib/libgtest.a lib/libgtest_main.a
+build test/runAllTests.exe: CXX_EXECUTABLE_LINKER__runAllTests_Debug test/CMakeFiles/runAllTests.dir/DateTest.cpp.obj test/CMakeFiles/runAllTests.dir/runAllTests.cpp.obj test/CMakeFiles/runAllTests.dir/ActivityTest.cpp.obj | lib/libgtest.a lib/libgtest_main.a libToDoList_lib.a lib/libgtest.a || libToDoList_lib.a lib/libgtest.a lib/libgtest_main.a
   FLAGS = -g
   LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  libToDoList_lib.a  lib/libgtest.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = test\CMakeFiles\runAllTests.dir
