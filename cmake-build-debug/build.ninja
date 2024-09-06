@@ -47,22 +47,10 @@ cmake_ninja_workdir = C$:/Users/stefa/CLionProjects/ToDoList/cmake-build-debug/
 #############################################
 # Order-only phony target for ToDoList
 
-build cmake_object_order_depends_target_ToDoList: phony || CMakeFiles/ToDoList.dir
+build cmake_object_order_depends_target_ToDoList: phony || cmake_object_order_depends_target_ToDoList_lib
 
 build CMakeFiles/ToDoList.dir/main.cpp.obj: CXX_COMPILER__ToDoList_Debug C$:/Users/stefa/CLionProjects/ToDoList/main.cpp || cmake_object_order_depends_target_ToDoList
   DEP_FILE = CMakeFiles\ToDoList.dir\main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++23
-  OBJECT_DIR = CMakeFiles\ToDoList.dir
-  OBJECT_FILE_DIR = CMakeFiles\ToDoList.dir
-
-build CMakeFiles/ToDoList.dir/ToDoList.cpp.obj: CXX_COMPILER__ToDoList_Debug C$:/Users/stefa/CLionProjects/ToDoList/ToDoList.cpp || cmake_object_order_depends_target_ToDoList
-  DEP_FILE = CMakeFiles\ToDoList.dir\ToDoList.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++23
-  OBJECT_DIR = CMakeFiles\ToDoList.dir
-  OBJECT_FILE_DIR = CMakeFiles\ToDoList.dir
-
-build CMakeFiles/ToDoList.dir/Date.cpp.obj: CXX_COMPILER__ToDoList_Debug C$:/Users/stefa/CLionProjects/ToDoList/Date.cpp || cmake_object_order_depends_target_ToDoList
-  DEP_FILE = CMakeFiles\ToDoList.dir\Date.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++23
   OBJECT_DIR = CMakeFiles\ToDoList.dir
   OBJECT_FILE_DIR = CMakeFiles\ToDoList.dir
@@ -75,15 +63,52 @@ build CMakeFiles/ToDoList.dir/Date.cpp.obj: CXX_COMPILER__ToDoList_Debug C$:/Use
 #############################################
 # Link the executable ToDoList.exe
 
-build ToDoList.exe: CXX_EXECUTABLE_LINKER__ToDoList_Debug CMakeFiles/ToDoList.dir/main.cpp.obj CMakeFiles/ToDoList.dir/ToDoList.cpp.obj CMakeFiles/ToDoList.dir/Date.cpp.obj
+build ToDoList.exe: CXX_EXECUTABLE_LINKER__ToDoList_Debug CMakeFiles/ToDoList.dir/main.cpp.obj | libToDoList_lib.a || libToDoList_lib.a
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = libToDoList_lib.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ToDoList.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_FILE = ToDoList.exe
   TARGET_IMPLIB = libToDoList.dll.a
   TARGET_PDB = ToDoList.exe.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target ToDoList_lib
+
+
+#############################################
+# Order-only phony target for ToDoList_lib
+
+build cmake_object_order_depends_target_ToDoList_lib: phony || CMakeFiles/ToDoList_lib.dir
+
+build CMakeFiles/ToDoList_lib.dir/Date.cpp.obj: CXX_COMPILER__ToDoList_lib_Debug C$:/Users/stefa/CLionProjects/ToDoList/Date.cpp || cmake_object_order_depends_target_ToDoList_lib
+  DEP_FILE = CMakeFiles\ToDoList_lib.dir\Date.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++23
+  OBJECT_DIR = CMakeFiles\ToDoList_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles\ToDoList_lib.dir
+
+build CMakeFiles/ToDoList_lib.dir/ToDoList.cpp.obj: CXX_COMPILER__ToDoList_lib_Debug C$:/Users/stefa/CLionProjects/ToDoList/ToDoList.cpp || cmake_object_order_depends_target_ToDoList_lib
+  DEP_FILE = CMakeFiles\ToDoList_lib.dir\ToDoList.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++23
+  OBJECT_DIR = CMakeFiles\ToDoList_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles\ToDoList_lib.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target ToDoList_lib
+
+
+#############################################
+# Link the static library libToDoList_lib.a
+
+build libToDoList_lib.a: CXX_STATIC_LIBRARY_LINKER__ToDoList_lib_Debug CMakeFiles/ToDoList_lib.dir/Date.cpp.obj CMakeFiles/ToDoList_lib.dir/ToDoList.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles\ToDoList_lib.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = libToDoList_lib.a
+  TARGET_PDB = ToDoList_lib.a.dbg
 
 
 #############################################
@@ -108,10 +133,93 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
 # C:/Users/stefa/CLionProjects/ToDoList/CMakeLists.txt
 # =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target runAllTests
+
+
+#############################################
+# Order-only phony target for runAllTests
+
+build cmake_object_order_depends_target_runAllTests: phony || cmake_object_order_depends_target_ToDoList_lib cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+
+build test/CMakeFiles/runAllTests.dir/runAllTests.cpp.obj: CXX_COMPILER__runAllTests_Debug C$:/Users/stefa/CLionProjects/ToDoList/test/runAllTests.cpp || cmake_object_order_depends_target_runAllTests
+  DEP_FILE = test\CMakeFiles\runAllTests.dir\runAllTests.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/include -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test\CMakeFiles\runAllTests.dir
+  OBJECT_FILE_DIR = test\CMakeFiles\runAllTests.dir
+
+build test/CMakeFiles/runAllTests.dir/ActivityTest.cpp.obj: CXX_COMPILER__runAllTests_Debug C$:/Users/stefa/CLionProjects/ToDoList/test/ActivityTest.cpp || cmake_object_order_depends_target_runAllTests
+  DEP_FILE = test\CMakeFiles\runAllTests.dir\ActivityTest.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/include -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test\CMakeFiles\runAllTests.dir
+  OBJECT_FILE_DIR = test\CMakeFiles\runAllTests.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target runAllTests
+
+
+#############################################
+# Link the executable test\runAllTests.exe
+
+build test/runAllTests.exe: CXX_EXECUTABLE_LINKER__runAllTests_Debug test/CMakeFiles/runAllTests.dir/runAllTests.cpp.obj test/CMakeFiles/runAllTests.dir/ActivityTest.cpp.obj | lib/libgtest.a lib/libgtest_main.a libToDoList_lib.a lib/libgtest.a || libToDoList_lib.a lib/libgtest.a lib/libgtest_main.a
+  FLAGS = -g
+  LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  libToDoList_lib.a  lib/libgtest.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = test\CMakeFiles\runAllTests.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = test\runAllTests.exe
+  TARGET_IMPLIB = test\librunAllTests.dll.a
+  TARGET_PDB = runAllTests.exe.dbg
 
 
 #############################################
@@ -136,10 +244,412 @@ build test/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build test/rebuild_cache: phony test/CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build test/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/CMakeFiles/install.util: CUSTOM_COMMAND test/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/install: phony test/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/CMakeFiles/install/local.util: CUSTOM_COMMAND test/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/install/local: phony test/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/install/strip: phony test/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/stefa/CLionProjects/ToDoList/test/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build test/lib/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build test/lib/googletest/edit_cache: phony test/lib/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build test/lib/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\stefa\CLionProjects\ToDoList -BC:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/rebuild_cache: phony test/lib/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build test/lib/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/lib/googletest/CMakeFiles/install.util: CUSTOM_COMMAND test/lib/googletest/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/install: phony test/lib/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/lib/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND test/lib/googletest/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/install/local: phony test/lib/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/lib/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/lib/googletest/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/install/strip: phony test/lib/googletest/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Order-only phony target for gmock
+
+build cmake_object_order_depends_target_gmock: phony || cmake_object_order_depends_target_gtest
+
+build test/lib/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.obj: CXX_COMPILER__gmock_Debug C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
+  DEP_FILE = test\lib\googletest\googlemock\CMakeFiles\gmock.dir\src\gmock-all.cc.obj.d
+  FLAGS = -g -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -IC:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/include -IC:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/include -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test\lib\googletest\googlemock\CMakeFiles\gmock.dir
+  OBJECT_FILE_DIR = test\lib\googletest\googlemock\CMakeFiles\gmock.dir\src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Link the static library lib\libgmock.a
+
+build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Debug test/lib/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.obj || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = test\lib\googletest\googlemock\CMakeFiles\gmock.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = lib\libgmock.a
+  TARGET_PDB = gmock.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Order-only phony target for gmock_main
+
+build cmake_object_order_depends_target_gmock_main: phony || cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gtest
+
+build test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj: CXX_COMPILER__gmock_main_Debug C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
+  DEP_FILE = test\lib\googletest\googlemock\CMakeFiles\gmock_main.dir\src\gmock_main.cc.obj.d
+  FLAGS = -g -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/include -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/include -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test\lib\googletest\googlemock\CMakeFiles\gmock_main.dir
+  OBJECT_FILE_DIR = test\lib\googletest\googlemock\CMakeFiles\gmock_main.dir\src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Link the static library lib\libgmock_main.a
+
+build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Debug test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj || lib/libgmock.a lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = test\lib\googletest\googlemock\CMakeFiles\gmock_main.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = lib\libgmock_main.a
+  TARGET_PDB = gmock_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build test/lib/googletest/googlemock/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googlemock && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build test/lib/googletest/googlemock/edit_cache: phony test/lib/googletest/googlemock/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build test/lib/googletest/googlemock/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googlemock && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\stefa\CLionProjects\ToDoList -BC:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googlemock/rebuild_cache: phony test/lib/googletest/googlemock/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build test/lib/googletest/googlemock/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/lib/googletest/googlemock/CMakeFiles/install.util: CUSTOM_COMMAND test/lib/googletest/googlemock/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googlemock && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googlemock/install: phony test/lib/googletest/googlemock/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/lib/googletest/googlemock/CMakeFiles/install/local.util: CUSTOM_COMMAND test/lib/googletest/googlemock/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googlemock && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googlemock/install/local: phony test/lib/googletest/googlemock/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/lib/googletest/googlemock/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/lib/googletest/googlemock/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googlemock && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googlemock/install/strip: phony test/lib/googletest/googlemock/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Order-only phony target for gtest
+
+build cmake_object_order_depends_target_gtest: phony || test/lib/googletest/googletest/CMakeFiles/gtest.dir
+
+build test/lib/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj: CXX_COMPILER__gtest_Debug C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
+  DEP_FILE = test\lib\googletest\googletest\CMakeFiles\gtest.dir\src\gtest-all.cc.obj.d
+  FLAGS = -g -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -IC:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/include -IC:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test\lib\googletest\googletest\CMakeFiles\gtest.dir
+  OBJECT_FILE_DIR = test\lib\googletest\googletest\CMakeFiles\gtest.dir\src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Link the static library lib\libgtest.a
+
+build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug test/lib/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = test\lib\googletest\googletest\CMakeFiles\gtest.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = lib\libgtest.a
+  TARGET_PDB = gtest.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Order-only phony target for gtest_main
+
+build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_depends_target_gtest
+
+build test/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj: CXX_COMPILER__gtest_main_Debug C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
+  DEP_FILE = test\lib\googletest\googletest\CMakeFiles\gtest_main.dir\src\gtest_main.cc.obj.d
+  FLAGS = -g -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/include -isystem C:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test\lib\googletest\googletest\CMakeFiles\gtest_main.dir
+  OBJECT_FILE_DIR = test\lib\googletest\googletest\CMakeFiles\gtest_main.dir\src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Link the static library lib\libgtest_main.a
+
+build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug test/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = test\lib\googletest\googletest\CMakeFiles\gtest_main.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = lib\libgtest_main.a
+  TARGET_PDB = gtest_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build test/lib/googletest/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build test/lib/googletest/googletest/edit_cache: phony test/lib/googletest/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build test/lib/googletest/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\stefa\CLionProjects\ToDoList -BC:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googletest/rebuild_cache: phony test/lib/googletest/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build test/lib/googletest/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/lib/googletest/googletest/CMakeFiles/install.util: CUSTOM_COMMAND test/lib/googletest/googletest/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googletest/install: phony test/lib/googletest/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/lib/googletest/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND test/lib/googletest/googletest/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googletest/install/local: phony test/lib/googletest/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/lib/googletest/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/lib/googletest/googletest/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\stefa\CLionProjects\ToDoList\cmake-build-debug\test\lib\googletest\googletest && "D:\CLion 2023.1.5\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googletest/install/strip: phony test/lib/googletest/googletest/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
 
 build ToDoList: phony ToDoList.exe
+
+build ToDoList_lib: phony libToDoList_lib.a
+
+build gmock: phony lib/libgmock.a
+
+build gmock_main: phony lib/libgmock_main.a
+
+build gtest: phony lib/libgtest.a
+
+build gtest_main: phony lib/libgtest_main.a
+
+build libgmock.a: phony lib/libgmock.a
+
+build libgmock_main.a: phony lib/libgmock_main.a
+
+build libgtest.a: phony lib/libgtest.a
+
+build libgtest_main.a: phony lib/libgtest_main.a
+
+build runAllTests: phony test/runAllTests.exe
+
+build runAllTests.exe: phony test/runAllTests.exe
 
 # =============================================================================
 # Folder targets.
@@ -149,14 +659,35 @@ build ToDoList: phony ToDoList.exe
 #############################################
 # Folder: C:/Users/stefa/CLionProjects/ToDoList/cmake-build-debug
 
-build all: phony ToDoList.exe test/all
+build all: phony ToDoList.exe libToDoList_lib.a test/all
 
 # =============================================================================
 
 #############################################
 # Folder: C:/Users/stefa/CLionProjects/ToDoList/cmake-build-debug/test
 
-build test/all: phony
+build test/all: phony test/runAllTests.exe test/lib/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/stefa/CLionProjects/ToDoList/cmake-build-debug/test/lib/googletest
+
+build test/lib/googletest/all: phony test/lib/googletest/googlemock/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/stefa/CLionProjects/ToDoList/cmake-build-debug/test/lib/googletest/googlemock
+
+build test/lib/googletest/googlemock/all: phony lib/libgmock.a lib/libgmock_main.a test/lib/googletest/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/stefa/CLionProjects/ToDoList/cmake-build-debug/test/lib/googletest/googletest
+
+build test/lib/googletest/googletest/all: phony lib/libgtest.a lib/libgtest_main.a
 
 # =============================================================================
 # Built-in targets
@@ -165,14 +696,14 @@ build test/all: phony
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Users/stefa/CLionProjects/ToDoList/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake
+build build.ninja: RERUN_CMAKE | C$:/Users/stefa/CLionProjects/ToDoList/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/cmake/gmock.pc.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/cmake/gmock_main.pc.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/cmake/Config.cmake.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/cmake/gtest.pc.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/cmake/gtest_main.pc.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDependentOption.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakePackageConfigHelpers.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/GNUInstallDirs.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/WriteBasicConfigVersionFile.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/stefa/CLionProjects/ToDoList/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake: phony
+build C$:/Users/stefa/CLionProjects/ToDoList/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/cmake/gmock.pc.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googlemock/cmake/gmock_main.pc.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/CMakeLists.txt C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/cmake/Config.cmake.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/cmake/gtest.pc.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/cmake/gtest_main.pc.in C$:/Users/stefa/CLionProjects/ToDoList/test/lib/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeDependentOption.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakePackageConfigHelpers.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/GNUInstallDirs.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake D$:/CLion$ 2023.1.5/bin/cmake/win/x64/share/cmake-3.25/Modules/WriteBasicConfigVersionFile.cmake: phony
 
 
 #############################################
