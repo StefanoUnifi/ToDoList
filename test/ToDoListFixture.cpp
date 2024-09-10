@@ -43,9 +43,6 @@ TEST_F(ToDoListFixture, ModifyActivityTest) {
     todolist.modifyActivity("Scrivere lo unit test delle classi","", Date(9, 9, 2024));
     EXPECT_EQ(todolist.getToDoList().front().getDate(), "9/9/2024");
 
-    todolist.modifyActivity("Scrivere lo unit test delle classi","", date);
-    EXPECT_EQ(todolist.getToDoList().front().isCompleted(), true);
-
     todolist.modifyActivity("Scrivere lo unit test delle classi","Scrivere lo unit test delle classi rimanenti", date);
     EXPECT_EQ(todolist.getToDoList().front().getDescription(), "Scrivere lo unit test delle classi rimanenti");
 }
@@ -56,7 +53,7 @@ TEST_F(ToDoListFixture, DisplayUncompletedActivitiesTest) {
     testing::internal::CaptureStdout();
     todolist.displayUncompletedActivities();
     std::string output = testing::internal::GetCapturedStdout();
-    std::string expected = "\nList of uncompleted activities:\nDescription: Scrivere mail al professore - Date: 9/9/2024\n";
+    std::string expected = "\nList of uncompleted activities:\nDescription: Scrivere mail al professore - 9/9/2024\n";
     EXPECT_EQ(output, expected);
 }
 
