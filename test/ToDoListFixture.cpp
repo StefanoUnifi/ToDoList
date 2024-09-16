@@ -45,6 +45,11 @@ TEST_F(ToDoListFixture, ModifyActivityTest) {
 
     todolist.modifyActivity("Scrivere lo unit test delle classi","Scrivere lo unit test delle classi rimanenti", date);
     EXPECT_EQ(todolist.getToDoList().front().getDescription(), "Scrivere lo unit test delle classi rimanenti");
+
+    testing::internal::CaptureStdout();
+    todolist.modifyActivity("Scrivere arrivederci al professore","Scrivere buongiorno al professore", date);
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "Sorry there's not an activity with description: Scrivere arrivederci al professore\n");
 }
 
 TEST_F(ToDoListFixture, DisplayUncompletedActivitiesTest) {
