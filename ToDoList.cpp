@@ -21,8 +21,9 @@ void ToDoList::setTitle(const std::string &title) {
 
 void ToDoList::addActivity(const Activity &a) {
     toDoList.push_back(a);
-    this->nOfAct++;
-    this->displayAllActivities();
+    nOfAct++;
+    nOfComplAct++;
+    displayAllActivities();
 }
 
 void ToDoList::removeActivity(const std::string &description) {
@@ -30,10 +31,10 @@ void ToDoList::removeActivity(const std::string &description) {
 
     if (!deletedAct.getDescription().empty() || !deletedAct.getDate().empty()) {
         toDoList.remove(deletedAct);
-        this->nOfAct--;
+        nOfAct--;
         if (deletedAct.isCompleted())
-            this->nOfComplAct--;
-        this->displayAllActivities();
+            nOfComplAct--;
+        displayAllActivities();
     } else
         std::cout << "Sorry there's not an activity with description: " << description << std::endl;
 }
@@ -50,8 +51,8 @@ Activity &ToDoList::helperFindActivity(const std::string &parameter) {
 
 void ToDoList::removeActivities() {
     toDoList.clear();
-    this->nOfAct = 0;
-    this->nOfComplAct = 0;
+    nOfAct = 0;
+    nOfComplAct = 0;
 }
 
 void ToDoList::modifyActivity(const std::string &desc, const std::string &newDesc, const Date &newDate) {
@@ -73,9 +74,9 @@ void ToDoList::setActivityCompleted(const std::string &description) {
 
     if (!setAct.isCompleted()){
         setAct.setCompleted();
-        this->nOfComplAct++;
+        nOfComplAct++;
     }
-    this->displayAllActivities();
+    displayAllActivities();
 }
 
 void ToDoList::displayAllActivities() {

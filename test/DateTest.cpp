@@ -52,6 +52,7 @@ TEST(DateTest, EqualityOperatorTest) {
 
 TEST(DateTest, InvalidDateTest) {
     EXPECT_THROW(Date date(30, 2, 2024), std::out_of_range);
+    EXPECT_THROW(Date date(29, 2, 2023), std::out_of_range);
     EXPECT_THROW(Date date(31, 4, 2024), std::out_of_range);
     EXPECT_THROW(Date date(33, 6, 2024), std::out_of_range);
     EXPECT_THROW(Date date(0, 7, 2024), std::out_of_range);
