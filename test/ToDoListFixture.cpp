@@ -26,6 +26,7 @@ TEST_F(ToDoListFixture, RemoveActivityTest) {
     todolist.removeActivity("Scrivere ciao al professore");
     std::string output = testing::internal::GetCapturedStdout();
     EXPECT_EQ(output, "Sorry there's not an activity with description: Scrivere ciao al professore\n");
+    EXPECT_EQ(todolist.getToDoList().size(), 1);
 }
 
 TEST_F(ToDoListFixture, RemoveActivitiesTest) {
